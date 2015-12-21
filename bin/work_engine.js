@@ -138,11 +138,11 @@ exports.put_object = function(options, callback) {
 	    function (err, data) {
 
 	      if (err) {
-	        console.log('error:', err);
+	        //console.log('error:', err);
 	        callback(err, options.path)
 	      }
 
-	      console.log('success:', data);
+	      //console.log('success:', data);
 	      callback(null, options.path)
 	    });
 	});

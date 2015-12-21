@@ -48,6 +48,8 @@ router.post('/upload/common', function (req, res, next) {
 
           var file_name = file.originalFilename;
 
+          /*
+
           switch (file.headers['content-type']) {
               case 'image/pjpeg':extension_name = 'jpg';
                   break;
@@ -64,6 +66,9 @@ router.post('/upload/common', function (req, res, next) {
               default:
                   throw new Error('File format error.');
           }
+
+
+          */
 
           //console.log(file.originalFilename);
           //console.log(file.path);
