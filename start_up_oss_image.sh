@@ -1,0 +1,1 @@
+node up_oss_image.js | bunyan
