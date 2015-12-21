@@ -1,0 +1,30 @@
+var express = require('express');
+var router = express.Router();
+var fs = require('fs')
+//var images = require('images');
+var conf = require('../config');
+var ALY = require("aliyun-sdk");
+
+var work_engine = require("../bin/work_engine");
+
+router.get('/sts', function (req, res, next) {
+
+  work_engine.get_aliyun_sts(function(err, data){
+    if(err){
+      res.status(200).send({
+        "code": -1, 
+        "message": "Fail", 
+        "data": null
+      });
+    }else{
+      res.status(200).send({
+        "code": 0, 
+        "message": "Success", 
+        "data": data
+      });
+    }
+    
+  });
+});
+
+module.exports = router;
