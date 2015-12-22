@@ -4,7 +4,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
 
-var conf = require('./config');
+var config = require('./config');
 
 var image = require('./routes/image');
 var secure = require('./routes/secure');
@@ -61,11 +61,11 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(conf.port, function() {
+app.listen(config.port, function() {
     var date = new Date();
     var log = '\n';
     log += '------------------------------------------------------------\n';
-    log += '\tExpress server listening on port '+conf.port+'\n';
+    log += '\tExpress server listening on port '+config.port+'\n';
     log += '\tStart time: ' + date + '\n';
     log += '\tEnvironment: ' + app.settings.env + '\n';
     log += '------------------------------------------------------------\n';

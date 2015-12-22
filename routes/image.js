@@ -6,10 +6,10 @@ var multiparty = require('multiparty');
 //var images = require('images');
 var gm = require('gm'); // yum install ImageMagick
 var redis = require('redis');
-var conf = require('../config');
+var config = require('../config');
 
-var redis_cli = redis.createClient(conf.redis_url);
-var channel = conf.queue_channel.up_oss_image;
+var redis_cli = redis.createClient(config.redis_url);
+var channel = config.queue_channel.up_oss_image;
 
 router.post('/upload/common', function (req, res, next) {
 

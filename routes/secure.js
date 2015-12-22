@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs')
 //var images = require('images');
-var conf = require('../config');
+var config = require('../config');
 var ALY = require("aliyun-sdk");
 
 var work_engine = require("../bin/work_engine");
