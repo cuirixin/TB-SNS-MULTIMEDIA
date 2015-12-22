@@ -1,9 +1,8 @@
-var conf = require('../config');
+var config = require('../config');
 var fs = require('fs');
 var assert = require('assert-plus');
 var sts = require('./sts');
 var oss = require('./oss');
-
 
 /**
 * 即时消息
