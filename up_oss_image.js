@@ -43,7 +43,7 @@ redis_cli.on("subscribe", function (channel) {
 redis_cli.on("message", function (channel, message) {
     var msg = JSON.parse(message.toString());
 
-    var bucket = process.env.NODE_ENV == 'production' ? 'tbx-image-1' : 'test-tbx-image-1';
+    var bucket = conf.aly.oss.bucket.image;
     var options = {
     	path: msg.path,
     	key: msg.key,

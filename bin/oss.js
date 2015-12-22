@@ -2,12 +2,6 @@ var conf = require('../config')
 var ALY = require("aliyun-sdk");
 
 // 线下环境是香港OSS
-endpoint = 'http://oss-cn-beijing.aliyuncs.com';
-
-// 线上环境是香港OSS
-if(process.env.NODE_ENV == 'production'){
-  endpoint = 'http://oss-cn-hongkong-internal.aliyuncs.com';
-}
 
 var oss = new ALY.OSS({
   accessKeyId: conf.aly.user.tbx_platform.accessKeyId,
@@ -24,7 +18,7 @@ var oss = new ALY.OSS({
   // 青岛：http://oss-cn-qingdao-internal.aliyuncs.com
   // 深圳：http://oss-cn-shenzhen-internal.aliyuncs.com
   // 香港：http://oss-cn-hongkong-internal.aliyuncs.com
-  endpoint: endpoint,
+  endpoint: conf.aly.oss.endpoint,
   // 这是 oss sdk 目前支持最新的 api 版本, 不需要修改
   apiVersion: '2013-10-15'
 });
