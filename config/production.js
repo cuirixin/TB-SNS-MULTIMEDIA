@@ -1,5 +1,5 @@
 
-var app = {
+module.exports = {
     port: 6161,
     redis_url: 'redis://root:UYdjD93@10.252.77.207:6379',
     queue_channel: {
@@ -21,5 +21,3 @@ var app = {
         
     }
 };
-
-module.exports = app;
