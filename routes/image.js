@@ -13,8 +13,7 @@ var channel = config.queue_channel.up_oss_image;
 
 router.post('/upload/common', function (req, res, next) {
 
-    
-    // 上传图片, 到temp目录
+    // 上传图片, 到uploads/image目录
 
     var form = new multiparty.Form();
 
@@ -45,7 +44,6 @@ router.post('/upload/common', function (req, res, next) {
       files.upload.forEach(function(file){
         try{
           var img_uuid = uuid.v1();
-
           var file_name = file.originalFilename;
 
           /*
@@ -66,7 +64,6 @@ router.post('/upload/common', function (req, res, next) {
               default:
                   throw new Error('File format error.');
           }
-
 
           */
 
@@ -129,8 +126,6 @@ router.post('/upload/common', function (req, res, next) {
                 redis_cli.publish(channel,  JSON.stringify({"path":simage, "key": simage_name}));
               })
             }
-            
-            //fs.unlinkSync(file.path);
 
           });
           
@@ -138,53 +133,6 @@ router.post('/upload/common', function (req, res, next) {
           suc_num++;
           uuids.push(img_uuid);
 
-          /* images 实现方式
-          var target = images(file.path).encode("jpg", {operation:100});
-          var width = target.width();
-          var height = target.height();
-
-          var o_maxsize = parseFloat(width >= height ? width:height);
-          var scale = 1.0;
-          var limage = form.uploadDir+img_uuid+".jpg";
-          var simage = form.uploadDir+img_uuid+"_s.jpg";
-
-          if(o_maxsize <= 480){
-            target.save(limage, {
-                quality : 90
-            });
-            target.save(simage, {
-                quality : 90
-            });
-          }
-
-          else if(o_maxsize <= 860){
-            target.save(limage, {
-                quality : 90
-            });
-            scale = o_maxsize/480.0;
-            target.size(parseInt(width/scale)).save(simage, {
-                quality : 90
-            });
-
-          }
-
-          else if(o_maxsize > 860){
-            scale = o_maxsize/860;
-            target.size(parseInt(width/scale)).save(limage, {
-                quality : 100
-            });
-
-            scale = o_maxsize/480.0;
-            target.size(parseInt(width/scale)).save(simage, {
-                quality : 100
-            });
-          }
-
-          //fs.renameSync(file.path, form.uploadDir+img_uuid+".jpg");
-          total++;
-          suc_num++;
-          uuids.push(img_uuid);
-          */
         }catch(err){
           err_num++;
           fs.unlinkSync(file.path);

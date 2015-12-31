@@ -17,11 +17,12 @@ var log = bunyan.createLogger({
 			period: '1d',   // daily rotation 
 			count: 30        // keep 30 back copies 
 			*/
-		    stream: process.stdout            // log INFO and above to stdout 
+		  stream: process.stdout            // log INFO and above to stdout 
 		},
 		{
 		  level: 'error',
-		  path: './logs/up_oss_image_error.log'  // log ERROR and above to a file 
+		  //path: './logs/up_oss_image_error.log'  // log ERROR and above to a file 
+      stream: process.stderr
 		}
 	]
 });
