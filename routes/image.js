@@ -103,7 +103,7 @@ router.post('/upload/common', function (req, res, next) {
               });
             }
 
-            else if(o_maxsize <= 560){
+            else if(o_maxsize <= 600){
               target.write(limage, function(){
                 redis_cli.publish(channel,  JSON.stringify({"path": limage, "key": limage_name}));
                 fs.unlinkSync(file.path);
@@ -114,8 +114,8 @@ router.post('/upload/common', function (req, res, next) {
               })
             }
 
-            else if(o_maxsize > 560){
-              scale = o_maxsize/560;
+            else if(o_maxsize > 600){
+              scale = o_maxsize/600;
               target.resize(parseInt(width/scale), parseInt(height/scale)).autoOrient().write(limage, function(){
                 redis_cli.publish(channel,  JSON.stringify({"path": limage, "key": limage_name}));
                 fs.unlinkSync(file.path);
