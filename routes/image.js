@@ -92,7 +92,7 @@ router.post('/upload/common', function (req, res, next) {
             var simage_name = img_uuid+"_s.jpg";
             var simage = form.uploadDir+simage_name;
 
-            if(o_maxsize <= 320){
+            if(o_maxsize <= 400){
               target.write(limage, function(){
                 // Important!!! 这里注意发布消息必须用JSON.stringify处理
                 redis_cli.publish(channel, JSON.stringify({"path": limage, "key": limage_name}));
@@ -108,7 +108,7 @@ router.post('/upload/common', function (req, res, next) {
                 redis_cli.publish(channel,  JSON.stringify({"path": limage, "key": limage_name}));
                 fs.unlinkSync(file.path);
               });
-              scale = o_maxsize/320.0;
+              scale = o_maxsize/400.0;
               target.resize(parseInt(width/scale), parseInt(height/scale)).autoOrient().write(simage, function(){
                 redis_cli.publish(channel,  JSON.stringify({"path": simage, "key": simage_name}));
               })
@@ -121,7 +121,7 @@ router.post('/upload/common', function (req, res, next) {
                 fs.unlinkSync(file.path);
               })
 
-              scale = o_maxsize/320.0;
+              scale = o_maxsize/400.0;
               target.resize(parseInt(width/scale), parseInt(height/scale)).autoOrient().write(simage, function(){
                 redis_cli.publish(channel,  JSON.stringify({"path":simage, "key": simage_name}));
               })
