@@ -43,7 +43,7 @@ router.post('/upload/common', function (req, res, next) {
 
       files.upload.forEach(function(file){
         try{
-          var img_uuid = uuid.v1();
+          var img_uuid = uuid.v1().replace(/-/g, "") + Math.random()*100000.toString();
           var file_name = file.originalFilename;
 
           /*
