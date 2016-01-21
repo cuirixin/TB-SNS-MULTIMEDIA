@@ -1,6 +1,6 @@
 
 module.exports = {
-    port: 6262,
+    port: 6161,
     redis_url: 'redis://root:UYdjD93@127.0.0.1:6379',
     queue_channel: {
         up_oss_image: "up_oss_image"
