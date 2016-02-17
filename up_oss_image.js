@@ -1,5 +1,5 @@
 /**
-* 服务端向用户推送消息到达提示（非即时消息）
+* 上传OSS服务
 */
 
 var redis = require('redis');

@@ -34,7 +34,14 @@ exports.refresh_aliyun_sts = function(callback) {
 		    "oss:PutObject",
 		    "oss:GetBucket",
 		  ],
-		  "Resource": "*",
+		  "Resource": [
+            "acs:oss:*:*:tb-image-1/*", 
+            "acs:oss:*:*:tb-image-1",
+            "acs:oss:*:*:tbx-image-1/*", 
+            "acs:oss:*:*:tbx-image-1",
+            "acs:oss:*:*:test-tbx-image-1/*", 
+            "acs:oss:*:*:test-tbx-image-1",
+          ],
 		  "Effect": "Allow"
 		}
 		]
@@ -128,6 +135,8 @@ exports.put_object = function(options, callback) {
 	      ServerSideEncryption: 'AES256',
 	      Expires: null                     // 参考: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21
 	  };
+
+      // 图片相关设置
 	  if(options.type == 'image'){
 	  	ops.ContentType = 'image/jpeg';
 	  	ops.CacheControl = 'max-age=2592000';

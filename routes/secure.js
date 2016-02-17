@@ -9,6 +9,8 @@ var work_engine = require("../bin/work_engine");
 
 router.get('/sts', function (req, res, next) {
 
+  //console.log(req.query.s.role);
+
   work_engine.get_aliyun_sts(function(err, data){
     if(err){
       res.status(200).send({

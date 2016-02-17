@@ -41,6 +41,12 @@ router.post('/upload/common', function (req, res, next) {
       var uuids = [];
       var uuids_path = [];
 
+      if (!files.upload){
+        console.log('Param upload is required. ');
+        res.send({"code": -1, "message": "Param upload is required. "});
+        return;
+      }
+
       files.upload.forEach(function(file){
         try{
           var img_uuid = uuid.v1().replace(/-/g, "") + parseInt(Math.random()*100000);

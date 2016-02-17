@@ -3,7 +3,8 @@ module.exports = {
     port: 6161,
     redis_url: 'redis://root:UYdjD93@127.0.0.1:6379',
     queue_channel: {
-        up_oss_image: "up_oss_image"
+        up_oss_image: "up_oss_image",
+        up_oss_video: "up_oss_video"
     },
     aly : {
         user: {
@@ -15,7 +16,8 @@ module.exports = {
         oss : {
             endpoint : 'http://oss-cn-beijing.aliyuncs.com',
             bucket: {
-                image: 'test-tbx-image-1'
+                image: 'test-tbx-image-1',
+                video: 'test-tbx-video-1'
             }
         }
         

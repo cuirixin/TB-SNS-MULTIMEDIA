@@ -7,6 +7,7 @@ var ejs = require('ejs');
 var config = require('./config');
 
 var image = require('./routes/image');
+var video = require('./routes/video');
 var secure = require('./routes/secure');
 
 var app = express();
@@ -29,6 +30,7 @@ app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 
 app.use('/image', image);
+app.use('/video', video);
 app.use('/secure', secure);
 
 // catch 404 and forward to error handler
